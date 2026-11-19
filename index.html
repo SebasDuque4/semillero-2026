@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Museo de Semillero 2026</title>
+<meta name="description" content="Recopilación de fotos y videos del Semillero de Inteligencia, Generación 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body class="min-h-screen overflow-x-hidden bg-space font-body text-ivory antialiased">
+<canvas id="stars" class="fixed inset-0 -z-0 h-full w-full" aria-hidden="true"></canvas>
+<canvas id="confetti" class="pointer-events-none fixed inset-0 z-[70] h-full w-full" aria-hidden="true"></canvas>
+
+<!-- ================= ENCABEZADO ================= -->
+<header class="relative z-10 overflow-hidden px-5 pb-16 pt-14 text-center sm:pt-20">
+  <svg class="orbit pointer-events-none absolute left-1/2 top-1/2 -z-10 w-[900px] max-w-none -translate-x-1/2 -translate-y-1/2 opacity-60" viewBox="0 0 600 600" fill="none" aria-hidden="true">
+    <circle cx="300" cy="300" r="290" stroke="#1C2C5E" stroke-width="1.5"/>
+    <circle cx="300" cy="300" r="210" stroke="#1C2C5E" stroke-width="1.5" stroke-dasharray="4 10"/>
+    <circle cx="300" cy="10" r="9" fill="#39FF88"/><circle cx="90" cy="450" r="6" fill="#2F6BFF"/><circle cx="520" cy="420" r="7" fill="#F6F1E4"/>
+  </svg>
+  <p class="mx-auto mb-5 w-fit rounded-full border border-line bg-panel/80 px-4 py-1.5 text-sm text-ivory/80">Generación 2026: misión completada</p>
+  <h1 class="mx-auto max-w-4xl font-display text-4xl font-extrabold leading-tight text-ivory sm:text-6xl lg:text-7xl" style="text-shadow:0 0 40px rgba(47,107,255,.55)">Museo de Semillero 2026</h1>
+  <p class="mx-auto mt-6 max-w-2xl text-lg text-ivory/80 sm:text-xl">Una recopilación del año: armamos carros con globos, abrimos computadores, programamos en Scratch y Python, y entrenamos una inteligencia artificial con nuestro cuerpo. Mira cada momento y aplaude a sus protagonistas.</p>
+  <div class="mt-9 flex flex-wrap items-center justify-center gap-4">
+    <button id="startPresent" class="btn bg-neon text-space hover:bg-ivory">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>Modo Presentación
+    </button>
+    <a href="#fotos" class="btn border border-cobalt text-ivory hover:bg-cobalt">Ver fotos</a>
+    <a href="#videos" class="btn border border-cobalt text-ivory hover:bg-cobalt">Ver videos</a>
+  </div>
+  <p class="mt-8 text-sm text-ivory/70"><span id="statPhotos" class="font-bold text-ivory">0</span> fotos, <span id="statVideos" class="font-bold text-ivory">0</span> videos y <span id="statClaps" class="font-bold text-neon">0</span> aplausos hasta ahora</p>
+</header>
+
+<!-- ✏️ PARA EDITAR: copia/pega un bloque <article class="project"> para agregar más momentos.
+     Fotos en la carpeta "fotos/", videos (.mp4) en la carpeta "videos/".
+     En cada uno cambia: la ruta (src), la fecha, el título, la descripción y las etiquetas.
+     El botón de aplaudir se agrega solo. -->
+<main class="relative z-10 mx-auto max-w-7xl px-5 pb-24">
+
+  <!-- ================= FOTOS ================= -->
+  <section id="fotos" class="scroll-mt-6">
+    <div class="mb-8 flex flex-wrap items-end justify-between gap-2">
+      <h2 class="font-display text-2xl font-bold sm:text-3xl">Fotos del semillero</h2>
+      <p class="text-sm text-ivory/60">Toca una foto para verla en grande</p>
+    </div>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+
+      <article class="project" data-type="foto">
+        <div class="media aspect-[3/4]"><img src="fotos/foto1.jpg" alt="Dos estudiantes arman un carrito con tapas de botella, pitillos y un globo" loading="lazy" class="h-full w-full object-cover"></div>
+        <div class="body flex flex-1 flex-col gap-2 p-5">
+          <p class="when">Taller de física</p>
+          <h3 class="title">Carro impulsado por globo</h3>
+          <p class="desc">Con tapas de botella, pitillos, palos de pincho y un globo armaron un carrito que avanza con el aire que sale del globo.</p>
+          <div class="tags mt-auto flex flex-wrap gap-2 pt-1"><span class="tag">Física</span><span class="tag">Reciclaje</span></div>
+        </div>
+      </article>
+
+      <article class="project" data-type="foto">
+        <div class="media aspect-[3/4]"><img src="fotos/foto2.jpg" alt="Un estudiante escribe un programa en Python en un portátil" loading="lazy" class="h-full w-full object-cover"></div>
+        <div class="body flex flex-1 flex-col gap-2 p-5">
+          <p class="when">Programación</p>
+          <h3 class="title">Primeros pasos en Python</h3>
+          <p class="desc">Un programa que le pide dos números al usuario y hace cálculos con ellos. ¡Las primeras líneas de código de verdad!</p>
+          <div class="tags mt-auto flex flex-wrap gap-2 pt-1"><span class="tag">Python</span><span class="tag">Programación</span></div>
+        </div>
+      </article>
+
+      <article class="project" data-type="foto">
+        <div class="media aspect-[3/4]"><img src="fotos/foto3.jpg" alt="Cuatro estudiantes prueban al aire libre un vehículo de botellas que se desliza por una cuerda" loading="lazy" class="h-full w-full object-cover"></div>
+        <div class="body flex flex-1 flex-col gap-2 p-5">
+          <p class="when">Al aire libre</p>
+          <h3 class="title">Experimento en la cuerda</h3>
+          <p class="desc">En la cancha, el equipo probó cómo viaja por una cuerda un vehículo hecho con botellas recicladas.</p>
+          <div class="tags mt-auto flex flex-wrap gap-2 pt-1"><span class="tag">Física</span><span class="tag">Trabajo en equipo</span><span class="tag">Reciclaje</span></div>
+        </div>
+      </article>
+
+      <article class="project" data-type="foto">
+        <div class="media aspect-[3/4]"><img src="fotos/foto4.jpg" alt="Un estudiante usa un destornillador para desarmar un portátil" loading="lazy" class="h-full w-full object-cover"></div>
+        <div class="body flex flex-1 flex-col gap-2 p-5">
+          <p class="when">Hardware</p>
+          <h3 class="title">Dentro de un computador</h3>
+          <p class="desc">Destornillador en mano para conocer las piezas por dentro: el ventilador, la memoria RAM y la tarjeta principal.</p>
+          <div class="tags mt-auto flex flex-wrap gap-2 pt-1"><span class="tag">Hardware</span><span class="tag">Mantenimiento</span></div>
+        </div>
+      </article>
+
+      <article class="project" data-type="foto">
+        <div class="media aspect-[3/4]"><img src="fotos/foto5.jpg" alt="Tres estudiantes desarman un portátil junto a una caja de herramientas" loading="lazy" class="h-full w-full object-cover"></div>
+        <div class="body flex flex-1 flex-col gap-2 p-5">
+          <p class="when">Hardware</p>
+          <h3 class="title">Taller de mantenimiento</h3>
+          <p class="desc">Entre todos abrieron un portátil, con caja de herramientas incluida, para aprender a cuidarlo y repararlo.</p>
+          <div class="tags mt-auto flex flex-wrap gap-2 pt-1"><span class="tag">Hardware</span><span class="tag">Trabajo en equipo</span></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ================= VIDEOS ================= -->
+  <section id="videos" class="mt-20 scroll-mt-6">
+    <div class="mb-8 flex flex-wrap items-end justify-between gap-2">
+      <h2 class="font-display text-2xl font-bold sm:text-3xl">Videos del semillero</h2>
+      <p class="text-sm text-ivory/60">Dale play para verlos</p>
+    </div>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+
+      <article class="project" data-type="video">
+        <div class="media aspect-[9/16]"><video src="videos/video1.mp4" poster="videos/video1.jpg" controls playsinline preload="none" class="h-full w-full bg-black object-cover" aria-label="Estudiante programando con bloques en Scratch"></video></div>
+        <div class="body flex flex-1 flex-col gap-2 p-5">
+          <p class="when">Marzo 2026</p>
+          <h3 class="title">Programando en Scratch</h3>
+          <p class="desc">Bloque a bloque, construyendo un programa en Scratch desde el portátil.</p>
+          <div class="tags mt-auto flex flex-wrap gap-2 pt-1"><span class="tag">Scratch</span><span class="tag">Programación</span></div>
+        </div>
+      </article>
+
+      <article class="project" data-type="video">
+        <div class="media aspect-[9/16]"><video src="videos/video2.mp4" poster="videos/video2.jpg" controls playsinline preload="none" class="h-full w-full bg-black object-cover" aria-label="Dos estudiantes crean un videojuego en Scratch"></video></div>
+        <div class="body flex flex-1 flex-col gap-2 p-5">
+          <p class="when">Marzo 2026</p>
+          <h3 class="title">Creando un videojuego</h3>
+          <p class="desc">En pareja arman un juego en Scratch y lo prueban con el teclado y el mouse.</p>
+          <div class="tags mt-auto flex flex-wrap gap-2 pt-1"><span class="tag">Scratch</span><span class="tag">Videojuegos</span></div>
+        </div>
+      </article>
+
+      <article class="project" data-type="video">
+        <div class="media aspect-[9/16]"><video src="videos/video3.mp4" poster="videos/video3.jpg" controls playsinline preload="none" class="h-full w-full bg-black object-cover" aria-label="Estudiante juega un juego de carreras en una tableta"></video></div>
+        <div class="body flex flex-1 flex-col gap-2 p-5">
+          <p class="when">Marzo 2026</p>
+          <h3 class="title">Juego de carreras</h3>
+          <p class="desc">Probando en la tableta un juego de carreras: ¡a esquivar y llegar a la meta!</p>
+          <div class="tags mt-auto flex flex-wrap gap-2 pt-1"><span class="tag">Videojuegos</span><span class="tag">Tableta</span></div>
+        </div>
+      </article>
+
+      <article class="project" data-type="video">
+        <div class="media aspect-[9/16]"><video src="videos/video4.mp4" poster="videos/video4.jpg" controls playsinline preload="none" class="h-full w-full bg-black object-cover" aria-label="Estudiante muestra cómo la computadora reconoce sus poses con la cámara"></video></div>
+        <div class="body flex flex-1 flex-col gap-2 p-5">
+          <p class="when">Julio 2026</p>
+          <h3 class="title">La IA reconoce mis poses</h3>
+          <p class="desc">Entrenaron un modelo de inteligencia artificial que, con la cámara, reconoce la postura del cuerpo y dice cuál es.</p>
+          <div class="tags mt-auto flex flex-wrap gap-2 pt-1"><span class="tag">Inteligencia artificial</span><span class="tag">Cámara</span></div>
+        </div>
+      </article>
+
+      <article class="project" data-type="video">
+        <div class="media aspect-[9/16]"><video src="videos/video5.mp4" poster="videos/video5.jpg" controls playsinline preload="none" class="h-full w-full bg-black object-cover" aria-label="Estudiante prueba frente a la cámara un modelo de inteligencia artificial que detecta poses"></video></div>
+        <div class="body flex flex-1 flex-col gap-2 p-5">
+          <p class="when">Julio 2026</p>
+          <h3 class="title">Entrenando una IA con el cuerpo</h3>
+          <p class="desc">Frente a la cámara, cada pose cambia la respuesta del modelo. ¡Así aprende una máquina!</p>
+          <div class="tags mt-auto flex flex-wrap gap-2 pt-1"><span class="tag">Inteligencia artificial</span><span class="tag">Machine learning</span></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+</main>
+
+<footer class="relative z-10 border-t border-line px-5 py-8 text-center text-sm text-ivory/60">Semillero de Inteligencia, Generación 2026</footer>
+
+<!-- ================= MODO PRESENTACIÓN ================= -->
+<section id="present" class="fixed inset-0 z-[60] hidden flex-col bg-space" role="dialog" aria-modal="true" aria-label="Modo presentación">
+  <div class="flex items-center justify-between gap-3 px-5 py-4 sm:px-8">
+    <p class="hidden font-display text-sm text-ivory/80 sm:block sm:text-base">Museo de Semillero 2026</p>
+    <div class="ml-auto flex items-center gap-3">
+      <span id="pCounter" class="text-sm text-ivory/70"></span>
+      <button id="pAuto" class="btn border border-line px-4 py-2 text-sm text-ivory hover:bg-line" aria-pressed="false">Auto: apagado</button>
+      <button id="pClose" class="btn bg-ivory px-4 py-2 text-sm text-space hover:bg-neon">Salir</button>
+    </div>
+  </div>
+  <div class="grid min-h-0 flex-1 gap-5 overflow-y-auto px-5 pb-4 sm:px-8 lg:grid-cols-[1.35fr_1fr] lg:items-center lg:gap-12">
+    <div id="pMedia" class="relative h-[45vh] overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-[#12275c] to-space shadow-[0_0_80px_-20px_#2F6BFF] lg:h-[72vh]"></div>
+    <div class="flex flex-col gap-3 lg:gap-6">
+      <p id="pWhen" class="text-lg font-bold uppercase tracking-wider text-neon sm:text-xl"></p>
+      <h2 id="pTitle" class="font-display text-2xl font-extrabold leading-tight sm:text-4xl lg:text-5xl"></h2>
+      <p id="pDesc" class="max-w-xl text-base leading-relaxed text-ivory/80 sm:text-lg lg:text-2xl"></p>
+      <div id="pTags" class="tags flex flex-wrap gap-2 [&_.tag]:px-4 [&_.tag]:py-1.5 [&_.tag]:text-sm lg:[&_.tag]:text-base"></div>
+      <div><button id="pClap" class="clap px-6 py-3 text-xl lg:text-2xl">
+        <span aria-hidden="true">👏</span><span>Aplaudir</span><span id="pClapCount" class="min-w-[2ch] text-center">0</span></button></div>
+    </div>
+  </div>
+  <div class="flex items-center justify-between gap-4 px-5 py-4 sm:px-8">
+    <button id="pPrev" class="btn border border-cobalt text-ivory hover:bg-cobalt">Anterior</button>
+    <p class="hidden text-sm text-ivory/60 sm:block">Usa las flechas del teclado para moverte y Esc para salir</p>
+    <button id="pNext" class="btn bg-cobalt text-ivory hover:bg-[#5A8BFF]">Siguiente</button>
+  </div>
+</section>
+
+<script>
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- Aplausos (se guardan en este navegador) ---------- */
+const store = {
+  get: k => { try { return +localStorage.getItem('aplausos:' + k) || 0; } catch { return 0; } },
+  set: (k, v) => { try { localStorage.setItem('aplausos:' + k, v); } catch {} }
+};
+const cards = $$('.project');
+const counts = {};
+cards.forEach((card, i) => {
+  card.dataset.id = card.dataset.id || $('img,video', card).getAttribute('src');
+  counts[card.dataset.id] = store.get(card.dataset.id);
+  const btn = document.createElement('button');
+  btn.className = 'clap mt-3 self-start';
+  btn.setAttribute('aria-label', 'Aplaudir: ' + $('.title', card).textContent);
+  btn.innerHTML = '<span aria-hidden="true">👏</span><span>Aplaudir</span><span class="num min-w-[2ch] text-center" data-count="' + card.dataset.id + '">0</span>';
+  btn.addEventListener('click', e => clap(card.dataset.id, e, btn));
+  $('.body', card).append(btn);
+  const img = $('img', card);   // tocar una foto la abre en grande
+  if (img) { img.classList.add('cursor-zoom-in'); img.addEventListener('click', () => openPresent(i)); }
+});
+// solo un video sonando a la vez
+$$('main video').forEach(v => v.addEventListener('play', () => $$('video').forEach(o => o !== v && o.pause())));
+
+function paintCounts() {
+  $$('[data-count]').forEach(el => el.textContent = counts[el.dataset.count] ?? 0);
+  $('#statClaps').textContent = Object.values(counts).reduce((a, b) => a + b, 0);
+  $('#statPhotos').textContent = cards.filter(c => c.dataset.type === 'foto').length;
+  $('#statVideos').textContent = cards.filter(c => c.dataset.type === 'video').length;
+}
+function clap(id, e, btn) {
+  counts[id]++; store.set(id, counts[id]); paintCounts();
+  btn.classList.remove('bump'); void btn.offsetWidth; btn.classList.add('bump');
+  const r = btn.getBoundingClientRect();
+  burst(e.clientX || r.left + r.width / 2, e.clientY || r.top + r.height / 2);
+}
+paintCounts();
+
+/* ---------- Confeti ---------- */
+const cc = $('#confetti'), cx = cc.getContext('2d');
+let parts = [], running = false;
+function sizeC() { cc.width = innerWidth; cc.height = innerHeight; }
+addEventListener('resize', sizeC); sizeC();
+function burst(x, y) {
+  if (reduce) return;
+  const colors = ['#39FF88', '#2F6BFF', '#F6F1E4', '#FFD21F', '#5A8BFF'];
+  for (let i = 0; i < 70; i++) {
+    const a = Math.random() * Math.PI * 2, v = 4 + Math.random() * 8;
+    parts.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 5, w: 6 + Math.random() * 6, h: 4 + Math.random() * 5,
+      rot: Math.random() * 6, vr: (Math.random() - .5) * .4, life: 70 + Math.random() * 40, c: colors[i % colors.length] });
+  }
+  if (!running) { running = true; requestAnimationFrame(tick); }
+}
+function tick() {
+  cx.clearRect(0, 0, cc.width, cc.height);
+  parts = parts.filter(p => p.life-- > 0);
+  parts.forEach(p => {
+    p.vy += .28; p.vx *= .985; p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+    cx.save(); cx.translate(p.x, p.y); cx.rotate(p.rot);
+    cx.globalAlpha = Math.min(1, p.life / 30); cx.fillStyle = p.c;
+    cx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h); cx.restore();
+  });
+  if (parts.length) requestAnimationFrame(tick); else { running = false; cx.clearRect(0, 0, cc.width, cc.height); }
+}
+
+/* ---------- Fondo de estrellas ---------- */
+const sc = $('#stars'), sx = sc.getContext('2d');
+let stars = [];
+function initStars() {
+  sc.width = innerWidth; sc.height = innerHeight;
+  stars = Array.from({ length: Math.round(innerWidth * innerHeight / 9000) }, () => ({
+    x: Math.random() * sc.width, y: Math.random() * sc.height, r: Math.random() * 1.3 + .2, p: Math.random() * 6 }));
+  if (reduce) drawStars(0);
+}
+function drawStars(t) {
+  sx.clearRect(0, 0, sc.width, sc.height);
+  stars.forEach(s => {
+    sx.globalAlpha = .35 + .65 * Math.abs(Math.sin(t / 1800 + s.p));
+    sx.fillStyle = s.r > 1 ? '#9DBBFF' : '#F6F1E4';
+    sx.beginPath(); sx.arc(s.x, s.y, s.r, 0, 6.3); sx.fill();
+  });
+  if (!reduce) requestAnimationFrame(drawStars);
+}
+addEventListener('resize', initStars); initStars();
+if (!reduce) requestAnimationFrame(drawStars);
+
+/* ---------- Modo Presentación ---------- */
+const pres = $('#present'); let cur = 0, auto = false, timer = null;
+function render(i) {
+  cur = (i + cards.length) % cards.length;
+  clearTimeout(timer);
+  const c = cards[cur], src = $('img,video', c), id = c.dataset.id;
+  const box = $('#pMedia');
+  box.querySelectorAll('video').forEach(v => v.pause());
+  box.innerHTML = '';
+  if (c.dataset.type === 'video') {
+    const v = document.createElement('video');
+    v.src = src.getAttribute('src'); v.poster = src.getAttribute('poster') || '';
+    v.controls = true; v.playsInline = true; v.autoplay = true;
+    v.setAttribute('aria-label', src.getAttribute('aria-label') || '');
+    v.className = 'absolute inset-0 h-full w-full bg-black object-contain';
+    v.addEventListener('ended', () => { if (auto) render(cur + 1); });
+    box.append(v);
+    v.play().catch(() => { v.muted = true; v.play().catch(() => {}); });
+  } else {
+    const im = new Image(); im.src = src.getAttribute('src'); im.alt = src.alt;
+    im.className = 'absolute inset-0 h-full w-full object-contain';
+    box.append(im);
+    if (auto) timer = setTimeout(() => render(cur + 1), 8000);
+  }
+  $('#pWhen').textContent = $('.when', c).textContent;
+  $('#pTitle').textContent = $('.title', c).textContent;
+  $('#pDesc').textContent = $('.desc', c).textContent;
+  $('#pTags').innerHTML = $('.tags', c).innerHTML;
+  $('#pCounter').textContent = (cur + 1) + ' de ' + cards.length;
+  $('#pClapCount').dataset.count = id; paintCounts();
+}
+function openPresent(start = 0) {
+  $$('main video').forEach(v => v.pause());
+  pres.classList.remove('hidden'); pres.classList.add('flex');
+  document.body.style.overflow = 'hidden'; render(typeof start === 'number' ? start : 0);
+  if (pres.requestFullscreen) pres.requestFullscreen().catch(() => {});
+  $('#pNext').focus();
+}
+function closePresent() {
+  setAuto(false);
+  $('#pMedia').querySelectorAll('video').forEach(v => v.pause());
+  $('#pMedia').innerHTML = '';
+  pres.classList.add('hidden'); pres.classList.remove('flex'); document.body.style.overflow = '';
+  if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+}
+function setAuto(on) {
+  auto = on; clearTimeout(timer);
+  $('#pAuto').textContent = 'Auto: ' + (on ? 'encendido' : 'apagado'); $('#pAuto').setAttribute('aria-pressed', on);
+  if (on && !pres.classList.contains('hidden') && cards[cur].dataset.type !== 'video') timer = setTimeout(() => render(cur + 1), 8000);
+}
+$('#startPresent').onclick = () => openPresent(0);
+$('#pClose').onclick = closePresent;
+$('#pPrev').onclick = () => render(cur - 1);
+$('#pNext').onclick = () => render(cur + 1);
+$('#pAuto').onclick = () => setAuto(!auto);
+$('#pClap').onclick = e => clap(cards[cur].dataset.id, e, $('#pClap'));
+addEventListener('keydown', e => {
+  if (pres.classList.contains('hidden')) return;
+  if (e.key === 'ArrowRight') render(cur + 1);
+  else if (e.key === 'ArrowLeft') render(cur - 1);
+  else if (e.key === 'Escape') closePresent();
+});
+document.addEventListener('fullscreenchange', () => { if (!document.fullscreenElement && !pres.classList.contains('hidden')) closePresent(); });
+</script>
+</body>
+</html>
